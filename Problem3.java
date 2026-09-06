@@ -1,41 +1,34 @@
-import java.util.Arrays;
+// Problem 3
 
 public class Problem3 {
 
-    static int[] findTopThreeScores(int[] scores) {
+    static String findMinMaxSpread(int[] scores) {
 
-        int first = Integer.MIN_VALUE;
-        int second = Integer.MIN_VALUE;
-        int third = Integer.MIN_VALUE;
+        int min = scores[0];
+        int max = scores[0];
 
-        for (int score : scores) {
+        for (int i = 1; i < scores.length; i++) {
 
-            if (score >= first) {
+            if (scores[i] < min) {
+                min = scores[i];
+            }
 
-                third = second;
-                second = first;
-                first = score;
-
-            } else if (score >= second) {
-
-                third = second;
-                second = score;
-
-            } else if (score > third) {
-
-                third = score;
+            if (scores[i] > max) {
+                max = scores[i];
             }
         }
 
-        return new int[]{first, second, third};
+        int spread = max - min;
+
+        return "Min: " + min +
+               " | Max: " + max +
+               " | Spread: " + spread;
     }
 
     public static void main(String[] args) {
 
         int[] scores = {45, 82, 79, 90, 33, 90, 61};
 
-        int[] topThree = findTopThreeScores(scores);
-
-        System.out.println(Arrays.toString(topThree));
+        System.out.println(findMinMaxSpread(scores));
     }
 }

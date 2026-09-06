@@ -1,54 +1,54 @@
+// Problem 4
+
 public class Problem4 {
 
-    static double rowAverage(int[] row) {
+    private static double rowAverage(int[] row) {
 
         int sum = 0;
 
-        for (int score : row) {
-            sum += score;
+        for (int value : row) {
+            sum += value;
         }
 
         return (double) sum / row.length;
     }
 
-
-    static String classifyRows(int[][] seatingScores, int threshold) {
+    static String classifyMatches(int[][] runsPerOver, int threshold) {
 
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < seatingScores.length; i++) {
+        for (int i = 0; i < runsPerOver.length; i++) {
 
-            double average = rowAverage(seatingScores[i]);
+            double average = rowAverage(runsPerOver[i]);
 
             if (i > 0) {
                 result.append(" | ");
             }
 
-            result.append("Row ").append(i).append(": ");
+            result.append("Match ").append(i).append(": ");
 
-            if (average < threshold) {
-                result.append("Quiet Zone");
+            if (average >= threshold) {
+                result.append("Power Surge");
             } else {
-                result.append("Buzzing Zone");
+                result.append("Normal");
             }
         }
 
         return result.toString();
     }
 
-
     public static void main(String[] args) {
 
-        int[][] seatingScores = {
-            {40, 50, 45},
-            {85, 90, 95},
-            {30, 20, 25}
+        int[][] runsPerOver = {
+            {4, 6, 8},
+            {10, 12, 14},
+            {2, 3, 1}
         };
 
-        int threshold = 60;
+        int threshold = 8;
 
         System.out.println(
-            classifyRows(seatingScores, threshold)
+            classifyMatches(runsPerOver, threshold)
         );
     }
 }

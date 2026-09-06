@@ -1,13 +1,15 @@
+// Problem 2
+
 public class Problem2 {
 
-    static String findDuplicateTeam(String[] teamNames) {
+    static String findDuplicatePick(String[] playerNames) {
 
-        for (int i = 0; i < teamNames.length; i++) {
+        for (int i = 0; i < playerNames.length; i++) {
 
-            for (int j = i + 1; j < teamNames.length; j++) {
+            for (int j = i + 1; j < playerNames.length; j++) {
 
-                if (teamNames[i].equals(teamNames[j])) {
-                    return "Duplicate Found: " + teamNames[i];
+                if (playerNames[i].equals(playerNames[j])) {
+                    return "Duplicate Found: " + playerNames[i];
                 }
             }
         }
@@ -17,12 +19,10 @@ public class Problem2 {
 
     public static void main(String[] args) {
 
-        String[] teamNames = {
-            "ByteForce",
-            "CodeCrafters",
-            "ByteForce"
+        String[] playerNames = {
+            "Kohli", "Bumrah", "Kohli", "Rohit"
         };
 
-        System.out.println(findDuplicateTeam(teamNames));
+        System.out.println(findDuplicatePick(playerNames));
     }
 }
